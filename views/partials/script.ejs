@@ -1,0 +1,39 @@
+<script>
+  async function changLang(ele) {
+    // get value of the language
+    let lang = ele.value
+
+    // change the language
+    const req = await fetch('/', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ lang }),
+    }).then(() => window.location.reload())
+  }
+  async function deleteTask(ele) {
+    // get id of the text
+    let id = ele.previousElementSibling.id
+
+    // create delete request
+    const req = await fetch('/task', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id }),
+    }).then(() => {
+      // delete task from tasks card
+      let parent = ele.parentElement
+      parent.remove()
+    })
+  }
+  async function completeTask(ele, isComplete) {
+    // get id of the text
+    let id = ele.id
+
+    // mark task is complete
+    let req = await fetch('/task', {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, isComplete }),
+    }).then(() => window.location.reload())
+  }
+</script>

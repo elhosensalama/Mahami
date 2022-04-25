@@ -1,0 +1,12 @@
+{
+  "lang": "ar",
+  "dir": "rtl",
+  "selectLang": "اختر لغة",
+
+  "add": "إضافة",
+  "addTask": "اضف مهمة",
+  "tasks": "المهام",
+  "completeTask": "المهام المنتهية",
+  "delete": "حذف",
+  "exit": "الخروج"
+}

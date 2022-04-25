@@ -1,0 +1,14 @@
+{
+	"lang": "en",
+	"dir": "ltr",
+	"selectLang": "Select an Language",
+	"add": "Add",
+	"addTask": "Add Task",
+	"tasks": "Tasks",
+	"completeTask": "Complete Tasks",
+	"delete": "Delete",
+	"exit": "Exit",
+	"Select": "Select",
+	"SelectLang": "SelectLang",
+	"Hello": "Hello"
+}

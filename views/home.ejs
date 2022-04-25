@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="<%- i18n.__('lang') %>" dir="<%- i18n.__('dir') %>">
+  <%- include('./partials/head.ejs') %>
+
+  <body>
+    <a href="/auth/logout"
+      ><button class="btn"><%= i18n.__('exit') %></button></a
+    >
+    <select class="select-language" onchange="changLang(this)">
+      <option hidden value="ar"><%= i18n.__('selectLang') %></option>
+      <option value="ar">العربية</option>
+      <option value="en">English</option>
+    </select>
+
+    <div class="container">
+      <form class="add-tasks-form" action="/task" method="POST">
+        <input
+          type="text"
+          name="taskText"
+          placeholder="<%- i18n.__('addTask') %>"
+          required
+        />
+        <button type="submit"><%= i18n.__('add') %></button>
+      </form>
+      <div class="card">
+        <span> <%= i18n.__('tasks') %> </span>
+        <% tasks.reverse().forEach(task=> { if (!task.complete) { %>
+        <div class="task">
+          <span onclick="completeTask(this, true)" id="<%- task.id %>"
+            ><input type="checkbox" />
+            <%= task.text %>
+          </span>
+          <button onclick="deleteTask(this)"><%= i18n.__('delete') %></button>
+        </div>
+        <% }}) %>
+      </div>
+      <div class="card">
+        <span> <%= i18n.__('completeTask') %> </span>
+        <% tasks.reverse().forEach(task=> { if (task.complete) { %>
+        <div class="task">
+          <span
+            class="complete"
+            onclick="completeTask(this, false)"
+            id="<%- task.id %>"
+            ><input type="checkbox" checked />
+            <%= task.text %>
+          </span>
+          <button onclick="deleteTask(this)"><%= i18n.__('delete') %></button>
+        </div>
+        <% }}) %>
+      </div>
+    </div>
+    <%- include('./partials/script.ejs') %>
+  </body>
+</html>
